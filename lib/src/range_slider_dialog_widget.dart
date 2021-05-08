@@ -1,4 +1,4 @@
-library range_slider_dialog;
+library flutter_range_slider_dialog;
 
 import 'package:flutter/material.dart';
 
