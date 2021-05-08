@@ -49,6 +49,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
 
   Widget _body() {
     return Container(
+      color: Colors.white,
       child: Stack(
         children: [
           Column(
@@ -61,7 +62,11 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
                     min: widget.minValue.toDouble(),
                     max: widget.maxValue.toDouble(),
                     values: this._selectedRangeValues,
-                    divisions: widget.divisions,
+                    divisions: widget.maxValue,
+                    labels: RangeLabels(
+                      this._selectedRangeValues.start.round().toString(),
+                      this._selectedRangeValues.end.round().toString(),
+                    ),
                     onChanged: (RangeValues values) {
                       setState(() {
                         this._selectedRangeValues = values;
