@@ -1,6 +1,6 @@
 name: range_slider_dialog
 description: A dialog with a range slider inside
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/DannyStrelok/flutter_range_slider_dialog
 homepage: https://github.com/DannyStrelok/flutter_range_slider_dialog
 issue_tracker: https://github.com/DannyStrelok/flutter_range_slider_dialog/issues
