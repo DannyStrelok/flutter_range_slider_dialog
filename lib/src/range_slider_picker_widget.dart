@@ -60,10 +60,11 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
       color: Colors.white,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _header(),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
             child: RangeSlider(
               min: widget.minValue.toDouble(),
               max: widget.maxValue.toDouble(),
@@ -80,9 +81,30 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
               },
             ),
           ),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                this._valueBox(this._selectedRangeValues.start.round().toInt().toString()),
+                this._valueBox(this._selectedRangeValues.end.round().toInt().toString()),
+              ],
+            ),
+          ),
           _dialogActions(),
         ],
       ),
+    );
+  }
+
+  Widget _valueBox(String value) {
+    return Container(
+      padding: const EdgeInsets.all(7),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.black54)
+      ),
+      child: Text(value),
     );
   }
 
@@ -96,43 +118,13 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
       ]),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(),
+        child: Center(
+          child: Text(
+            widget.headerText != null ? widget.headerText! : '',
+            style: Theme.of(context).textTheme.headline4!.copyWith(
+              fontSize: 18,
             ),
-            Expanded(
-              flex: 6,
-              child: Center(
-                child: Text(
-                  widget.headerText != null ? widget.headerText! : '',
-                  style: Theme.of(context).textTheme.headline4!.copyWith(
-                        fontSize: 18,
-                      ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: InkWell(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                onTap: () => Navigator.pop(context, null),
-                child: Container(
-                  width: 25,
-                  height: 25,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black54),
-                      shape: BoxShape.circle),
-                  child: Icon(
-                    Icons.close,
-                    color: Colors.black54,
-                  ),
-                ),
-              ),
-            )
-          ],
+          ),
         ),
       ),
     );
