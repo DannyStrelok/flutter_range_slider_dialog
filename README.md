@@ -1,7 +1,6 @@
 
 ## flutter_range_slider_dialog Plugin
 ![GitHub last commit](https://img.shields.io/github/last-commit/DannyStrelok/flutter_range_slider_dialog)
-
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/DannyStrelok/flutter_range_slider_dialog)](https://github.com/DannyStrelok/flutter_range_slider_dialog)
 
 Flutter Range Slider is a flutter package which shows a dialog with a RangeSlider within.
