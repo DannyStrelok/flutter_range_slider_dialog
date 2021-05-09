@@ -21,14 +21,14 @@ Flutter Range Slider is a flutter package which shows a dialog with a RangeSlide
 ```yaml
 
 dependencies:
-  flutter_range_slider_dialog: ^0.0.1
+  range_slider_dialog: ^0.0.1
 
 ```
 
 ### 2. Import library in dart file
 
 ```dart
-import 'package:flutter_range_slider_dialog/range_slider_dialog.dart';
+import 'package:range_slider_dialog/range_slider_dialog.dart';
 ```
 
 
