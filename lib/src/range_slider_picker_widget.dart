@@ -56,38 +56,43 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
   }
 
   Widget _body() {
-    return Container(
-      color: Colors.white,
-      child: Stack(
-        children: [
-          Column(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          color: Colors.white,
+          child: Stack(
             children: [
-              _header(),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-                  child: RangeSlider(
-                    min: widget.minValue.toDouble(),
-                    max: widget.maxValue.toDouble(),
-                    values: this._selectedRangeValues,
-                    divisions: widget.maxValue,
-                    labels: RangeLabels(
-                      this._selectedRangeValues.start.round().toString(),
-                      this._selectedRangeValues.end.round().toString(),
+              Column(
+                children: [
+                  _header(),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+                      child: RangeSlider(
+                        min: widget.minValue.toDouble(),
+                        max: widget.maxValue.toDouble(),
+                        values: this._selectedRangeValues,
+                        divisions: widget.maxValue,
+                        labels: RangeLabels(
+                          this._selectedRangeValues.start.round().toString(),
+                          this._selectedRangeValues.end.round().toString(),
+                        ),
+                        onChanged: (RangeValues values) {
+                          setState(() {
+                            this._selectedRangeValues = values;
+                          });
+                        },
+                      ),
                     ),
-                    onChanged: (RangeValues values) {
-                      setState(() {
-                        this._selectedRangeValues = values;
-                      });
-                    },
-                  ),
-                ),
-              )
+                  )
+                ],
+              ),
+              _dialogActions()
             ],
           ),
-          _dialogActions()
-        ],
-      ),
+        ),
+      ],
     );
   }
 

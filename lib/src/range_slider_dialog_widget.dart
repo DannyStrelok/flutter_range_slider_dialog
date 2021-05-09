@@ -40,7 +40,7 @@ class RangeSliderDialog {
             elevation: 0,
             backgroundColor: Colors.transparent,
             child: Container(
-              height: height ?? 450,
+              height: height,
               width: width,
               color: Colors.transparent,
               child: RangeSliderPicker(
@@ -50,6 +50,9 @@ class RangeSliderDialog {
                 minValue: minValue,
                 selectedRangeValues: selectedRangeValues,
                 acceptButtonText: acceptButtonText,
+                cancelButtonText: cancelButtonText,
+                headerText: headerText,
+                hideHeader: hideHeader,
               ),
             ),
           );
