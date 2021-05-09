@@ -176,8 +176,6 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
   Widget _actionButton(
       {required String label,
       VoidCallback? onPressed,
-      Color bgColor = Colors.transparent,
-      double elevation = 0,
       TextStyle? textStyle}) {
     return TextButton(
       onPressed: onPressed,
