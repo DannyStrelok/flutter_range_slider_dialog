@@ -1,6 +1,6 @@
 name: range_slider_dialog
-description: A dialog with a range slider inside
-version: 0.0.2
+description: A dialog with a range slider inside. You can customize the header and button text, and it just returns the RangeValue selected.
+version: 0.0.3
 repository: https://github.com/DannyStrelok/flutter_range_slider_dialog
 homepage: https://github.com/DannyStrelok/flutter_range_slider_dialog
 issue_tracker: https://github.com/DannyStrelok/flutter_range_slider_dialog/issues

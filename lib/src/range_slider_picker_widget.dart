@@ -66,7 +66,8 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
         children: [
           _header(),
           Container(
-            padding: const EdgeInsets.only(top: 25, right: 5, bottom: 5, left: 5),
+            padding:
+                const EdgeInsets.only(top: 25, right: 5, bottom: 5, left: 5),
             child: RangeSlider(
               min: widget.minValue.toDouble(),
               max: widget.maxValue.toDouble(),
@@ -88,8 +89,10 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                this._valueBox(this._selectedRangeValues.start.round().toInt().toString()),
-                this._valueBox(this._selectedRangeValues.end.round().toInt().toString()),
+                this._valueBox(
+                    this._selectedRangeValues.start.round().toInt().toString()),
+                this._valueBox(
+                    this._selectedRangeValues.end.round().toInt().toString()),
               ],
             ),
           ),
@@ -103,9 +106,8 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.black54)
-      ),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.black54)),
       child: Text(value),
     );
   }
@@ -124,8 +126,8 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
           child: Text(
             widget.headerText != null ? widget.headerText! : '',
             style: Theme.of(context).textTheme.headline4!.copyWith(
-              fontSize: 18,
-            ),
+                  fontSize: 18,
+                ),
           ),
         ),
       ),
@@ -174,9 +176,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
   }
 
   Widget _actionButton(
-      {required String label,
-      VoidCallback? onPressed,
-      TextStyle? textStyle}) {
+      {required String label, VoidCallback? onPressed, TextStyle? textStyle}) {
     return TextButton(
       onPressed: onPressed,
       child: Text(

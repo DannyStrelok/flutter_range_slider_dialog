@@ -1,3 +1,6 @@
+## 0.0.3
+* Included example and improved pub.dev scores
+
 ## 0.0.2
 * Updated readme to match with the package name
 
