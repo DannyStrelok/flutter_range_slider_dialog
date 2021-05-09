@@ -1,4 +1,4 @@
-library flutter_range_slider_dialog;
+library range_slider_dialog;
 
 import 'package:flutter/material.dart';
 part 'range_slider_picker_widget.dart';

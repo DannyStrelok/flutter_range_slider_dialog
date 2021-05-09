@@ -5,7 +5,7 @@
 
 Flutter Range Slider is a flutter package which shows a dialog with a RangeSlider within.
 
-![Overview](https://raw.githubusercontent.com/DannyStrelok/flutter_range_slider_dialog/master/docs/images/flutter_range_slider_dialog_demo.gif)
+![Overview](https://raw.githubusercontent.com/DannyStrelok/flutter_range_slider_dialog/master/doc/images/flutter_range_slider_dialog_demo.gif)
 
 ## Data flow
 * Invoke method `RangeSliderDialog.display()` to display RangeSlider dialog.
