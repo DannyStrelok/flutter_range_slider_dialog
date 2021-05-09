@@ -12,7 +12,7 @@ class RangeSliderPicker extends StatefulWidget {
   const RangeSliderPicker(
       {Key? key,
       this.selectedRangeValues,
-      required this.onApplyButtonClick,
+      this.onApplyButtonClick,
       this.divisions = 1,
       this.maxValue = 40,
       this.minValue = 0})
