@@ -66,7 +66,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
         children: [
           _header(),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+            padding: const EdgeInsets.only(top: 25, right: 5, bottom: 5, left: 5),
             child: RangeSlider(
               min: widget.minValue.toDouble(),
               max: widget.maxValue.toDouble(),
@@ -84,7 +84,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -137,7 +137,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
       alignment: Alignment.bottomCenter,
       child: Container(
         height: 45,
-        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        margin: EdgeInsets.only(top: 20, right: 10, bottom: 10, left: 10),
         alignment: Alignment.center,
         child: Container(
           width: double.infinity,
