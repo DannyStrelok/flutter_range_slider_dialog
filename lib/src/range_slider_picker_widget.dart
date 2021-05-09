@@ -13,18 +13,18 @@ class RangeSliderPicker extends StatefulWidget {
   final String? cancelButtonText;
   final String? acceptButtonText;
 
-  const RangeSliderPicker(
-      {Key? key,
-      this.selectedRangeValues,
-      this.onApplyButtonClick,
-      this.divisions = 1,
-      this.maxValue = 40,
-      this.minValue = 0,
-      this.hideHeader = false,
-      this.headerText = 'Select a range',
-      this.cancelButtonText = 'CANCEL',
-      this.acceptButtonText = 'ACCEPT',})
-      : super(key: key);
+  const RangeSliderPicker({
+    Key? key,
+    this.selectedRangeValues,
+    this.onApplyButtonClick,
+    this.divisions = 1,
+    this.maxValue = 40,
+    this.minValue = 0,
+    this.hideHeader = false,
+    this.headerText = 'Select a range',
+    this.cancelButtonText = 'CANCEL',
+    this.acceptButtonText = 'ACCEPT',
+  }) : super(key: key);
 
   @override
   _RangeSliderPickerState createState() => _RangeSliderPickerState();
@@ -58,30 +58,27 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
   Widget _body() {
     return Container(
       color: Colors.white,
-      child: Stack(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Column(
-            children: [
-              _header(),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-                child: RangeSlider(
-                  min: widget.minValue.toDouble(),
-                  max: widget.maxValue.toDouble(),
-                  values: this._selectedRangeValues,
-                  divisions: widget.maxValue,
-                  labels: RangeLabels(
-                    this._selectedRangeValues.start.round().toString(),
-                    this._selectedRangeValues.end.round().toString(),
-                  ),
-                  onChanged: (RangeValues values) {
-                    setState(() {
-                      this._selectedRangeValues = values;
-                    });
-                  },
-                ),
-              )
-            ],
+          _header(),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+            child: RangeSlider(
+              min: widget.minValue.toDouble(),
+              max: widget.maxValue.toDouble(),
+              values: this._selectedRangeValues,
+              divisions: widget.maxValue,
+              labels: RangeLabels(
+                this._selectedRangeValues.start.round().toString(),
+                this._selectedRangeValues.end.round().toString(),
+              ),
+              onChanged: (RangeValues values) {
+                setState(() {
+                  this._selectedRangeValues = values;
+                });
+              },
+            ),
           ),
           _dialogActions(),
         ],
@@ -90,7 +87,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
   }
 
   Widget _header() {
-    if( widget.hideHeader != null && widget.hideHeader == true) {
+    if (widget.hideHeader != null && widget.hideHeader == true) {
       return Container();
     }
     return Container(
@@ -158,12 +155,16 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _actionButton(
-                  label: widget.cancelButtonText != null ? widget.cancelButtonText! : '',
+                  label: widget.cancelButtonText != null
+                      ? widget.cancelButtonText!
+                      : '',
                   onPressed: () {
                     Navigator.pop(context, this._originalSelectedRangeValues);
                   }),
               _actionButton(
-                  label: widget.acceptButtonText != null ? widget.acceptButtonText! : '',
+                  label: widget.acceptButtonText != null
+                      ? widget.acceptButtonText!
+                      : '',
                   onPressed: () {
                     if (widget.onApplyButtonClick != null) {
                       widget.onApplyButtonClick!(this._selectedRangeValues);
