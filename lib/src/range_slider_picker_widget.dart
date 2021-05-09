@@ -8,6 +8,10 @@ class RangeSliderPicker extends StatefulWidget {
   final int minValue;
   final int maxValue;
   final int divisions;
+  final bool? hideHeader;
+  final String? headerText;
+  final String? cancelButtonText;
+  final String? acceptButtonText;
 
   const RangeSliderPicker(
       {Key? key,
@@ -15,7 +19,11 @@ class RangeSliderPicker extends StatefulWidget {
       this.onApplyButtonClick,
       this.divisions = 1,
       this.maxValue = 40,
-      this.minValue = 0})
+      this.minValue = 0,
+      this.hideHeader = false,
+      this.headerText = 'Select a range',
+      this.cancelButtonText = 'CANCEL',
+      this.acceptButtonText = 'ACCEPT',})
       : super(key: key);
 
   @override
@@ -84,6 +92,9 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
   }
 
   Widget _header() {
+    if( widget.hideHeader != null && widget.hideHeader == true) {
+      return Container();
+    }
     return Container(
       decoration: BoxDecoration(color: Colors.white, boxShadow: <BoxShadow>[
         BoxShadow(offset: Offset(0, 5), blurRadius: 15, color: Colors.black26)
@@ -101,7 +112,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
               flex: 6,
               child: Center(
                 child: Text(
-                  'Número de personas',
+                  widget.headerText,
                   style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontSize: 18,
                       ),
@@ -140,6 +151,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         alignment: Alignment.center,
         child: Container(
+          width: double.infinity,
           decoration: const BoxDecoration(
             color: Colors.white,
           ),
@@ -148,12 +160,12 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _actionButton(
-                  label: 'Cancelar',
+                  label: widget.cancelButtonText != null ? widget.cancelButtonText! : '',
                   onPressed: () {
                     Navigator.pop(context, this._originalSelectedRangeValues);
                   }),
               _actionButton(
-                  label: 'Aceptar',
+                  label: widget.acceptButtonText != null ? widget.acceptButtonText! : '',
                   onPressed: () {
                     if (widget.onApplyButtonClick != null) {
                       widget.onApplyButtonClick!(this._selectedRangeValues);
@@ -175,17 +187,10 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
       double elevation = 0,
       TextStyle? textStyle}) {
     return TextButton(
-      style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(bgColor),
-          elevation: MaterialStateProperty.all(elevation),
-          foregroundColor:
-              MaterialStateProperty.all(Theme.of(context).buttonColor)),
       onPressed: onPressed,
-      clipBehavior: Clip.antiAlias,
       child: Text(
         label,
         style: textStyle,
-        textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
       ),
     );

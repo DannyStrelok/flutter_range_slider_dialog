@@ -1,7 +1,6 @@
 library flutter_range_slider_dialog;
 
 import 'package:flutter/material.dart';
-
 part 'range_slider_picker_widget.dart';
 
 class RangeSliderDialog {
@@ -19,6 +18,10 @@ class RangeSliderDialog {
     int minValue = 0,
     int maxValue = 40,
     int divisions = 1,
+    bool? hideHeader,
+    String? headerText,
+    String? cancelButtonText,
+    String? acceptButtonText,
   }) async {
     if (height == null) {
       height = MediaQuery.of(context).size.height * .8;
@@ -37,7 +40,7 @@ class RangeSliderDialog {
             elevation: 0,
             backgroundColor: Colors.transparent,
             child: Container(
-              height: height,
+              height: height ?? 450,
               width: width,
               color: Colors.transparent,
               child: RangeSliderPicker(
@@ -46,6 +49,7 @@ class RangeSliderDialog {
                 maxValue: maxValue,
                 minValue: minValue,
                 selectedRangeValues: selectedRangeValues,
+                acceptButtonText: acceptButtonText,
               ),
             ),
           );
