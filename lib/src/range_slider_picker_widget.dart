@@ -112,7 +112,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
               flex: 6,
               child: Center(
                 child: Text(
-                  widget.headerText,
+                  widget.headerText != null ? widget.headerText! : '',
                   style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontSize: 18,
                       ),
