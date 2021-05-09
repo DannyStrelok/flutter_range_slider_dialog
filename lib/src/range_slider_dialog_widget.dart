@@ -7,7 +7,7 @@ part 'range_slider_picker_widget.dart';
 class RangeSliderDialog {
   static Future display<T>(
     context, {
-    OnApplyButtonClick onApplyButtonClick,
+    OnApplyButtonClick? onApplyButtonClick,
     double? height,
     double? width,
     double borderRadius = 20,
