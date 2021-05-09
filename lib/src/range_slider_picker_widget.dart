@@ -46,10 +46,12 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        child: Container(
-          child: _body(),
+      body: Center(
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          child: Container(
+            child: _body(),
+          ),
         ),
       ),
     );
@@ -82,7 +84,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -99,7 +101,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
 
   Widget _valueBox(String value) {
     return Container(
-      padding: const EdgeInsets.all(7),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.black54)
