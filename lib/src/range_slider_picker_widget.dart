@@ -44,30 +44,34 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
 
   @override
   Widget build(BuildContext context) {
+    Color _backGroundColor = Theme
+        .of(context)
+        .scaffoldBackgroundColor;
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Center(
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           child: Container(
-            child: _body(),
+            child: _body(_backGroundColor),
           ),
         ),
       ),
     );
   }
 
-  Widget _body() {
+  Widget _body(Color _backGroundColor) {
     return Container(
-      color: Colors.white,
+      // color: Colors.white,
+      color: _backGroundColor,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _header(),
+          _header(_backGroundColor),
           Container(
             padding:
-                const EdgeInsets.only(top: 25, right: 5, bottom: 5, left: 5),
+            const EdgeInsets.only(top: 25, right: 5, bottom: 5, left: 5),
             child: RangeSlider(
               min: widget.minValue.toDouble(),
               max: widget.maxValue.toDouble(),
@@ -90,19 +94,23 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 this._valueBox(
-                    this._selectedRangeValues.start.round().toInt().toString()),
+                    this._selectedRangeValues.start.round().toInt().toString(),
+                    _backGroundColor,
+                ),
                 this._valueBox(
-                    this._selectedRangeValues.end.round().toInt().toString()),
+                    this._selectedRangeValues.end.round().toInt().toString(),
+                    _backGroundColor,
+                ),
               ],
             ),
           ),
-          _dialogActions(),
+          _dialogActions(_backGroundColor),
         ],
       ),
     );
   }
 
-  Widget _valueBox(String value) {
+  Widget _valueBox(String value, Color _backGroundColor) {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -112,29 +120,36 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
     );
   }
 
-  Widget _header() {
+  Widget _header(Color _backGroundColor) {
     if (widget.hideHeader != null && widget.hideHeader == true) {
       return Container();
     }
     return Container(
-      decoration: BoxDecoration(color: Colors.white, boxShadow: <BoxShadow>[
-        BoxShadow(offset: Offset(0, 5), blurRadius: 15, color: Colors.black26)
-      ]),
+      decoration: BoxDecoration(
+        // color: Colors.white,
+          color: _backGroundColor,
+          boxShadow: <BoxShadow>[
+            BoxShadow(offset: Offset(0, 5), blurRadius: 15, color: Colors.black26)
+          ]),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
         child: Center(
           child: Text(
             widget.headerText != null ? widget.headerText! : '',
-            style: Theme.of(context).textTheme.headline4!.copyWith(
-                  fontSize: 18,
-                ),
+            style: Theme
+                .of(context)
+                .textTheme
+                .headline4!
+                .copyWith(
+              fontSize: 18,
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _dialogActions() {
+  Widget _dialogActions(Color _backGroundColor) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
@@ -143,8 +158,9 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
         alignment: Alignment.center,
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
-            color: Colors.white,
+          decoration: BoxDecoration(
+            // color: Colors.white,
+            color: _backGroundColor,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -175,8 +191,7 @@ class _RangeSliderPickerState extends State<RangeSliderPicker> {
     );
   }
 
-  Widget _actionButton(
-      {required String label, VoidCallback? onPressed, TextStyle? textStyle}) {
+  Widget _actionButton({required String label, VoidCallback? onPressed, TextStyle? textStyle}) {
     return TextButton(
       onPressed: onPressed,
       child: Text(
